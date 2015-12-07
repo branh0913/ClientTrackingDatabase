@@ -1,4 +1,5 @@
 import json
+from datetime import date
 
 __author__ = 'Brandon'
 
@@ -21,8 +22,14 @@ class UtilClass:
         #Find out fields associated with input file
         with open(input_file, 'r') as data_load:
             get_first_line = data_load.readline()
-            # field_list = {k: v for k,v }
-            self.table_handle.insert_data(**field_list)
+
+            for i in data_load.readlines():
+                insertion_dict = json.loads(i)
+                if 'due_date' or 'todays_date' in insertion_dict:
+                    insertion_dict['due_date'] = date.today()
+                    insertion_dict['todays_date'] = date.today()
+
+                self.table_handle.insert_data(**insertion_dict)
 
 
 

@@ -11,7 +11,7 @@ from abc import ABCMeta
 
 from Model import Client, Insurance, Patient, Base
 
-engine = create_engine('sqlite:///../customerTrackerDB.db')
+engine = create_engine('postgresql://postgres:Thanos36@localhost:5432/CustomerTrackingDB')
 
 
 class DataInsertion:

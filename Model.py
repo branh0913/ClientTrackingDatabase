@@ -38,7 +38,7 @@ class Client(Base):
     note = Column(String(100))
 
 
-customer_tracker = create_engine('sqlite:///customerTrackerDB.db')
+customer_tracker = create_engine('postgresql://postgres:Thanos36@localhost:5432/CustomerTrackingDB')
 
 Base.metadata.create_all(customer_tracker)
 
